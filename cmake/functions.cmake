@@ -3,14 +3,6 @@
 function(custom_enable_cxx17 TARGET)
     # Включаем C++17 везде, где CMake может.
 	target_compile_features(${TARGET} PUBLIC cxx_std_17)
-    # Включаем режим C++latest в Visual Studio
-	if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-		set_target_properties(${TARGET} PROPERTIES COMPILE_FLAGS "/std:c++latest")
-    # Включаем компоновку с libc++, libc++experimental и pthread для Clang
-    elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-		set_target_properties(${TARGET} PROPERTIES COMPILE_FLAGS "-stdlib=libc++ -pthread")
-        target_link_libraries(${TARGET} c++experimental pthread)
-    endif()
 endfunction(custom_enable_cxx17)
 
 # Функция добавляет цель-библиотеку.
