@@ -1,4 +1,4 @@
 .vs
 out/*
 /.idea/
-/external/entt/.vs/
+/entt/*
